@@ -12,9 +12,28 @@ var randomNumber = array.slice(0,4).toString().replace(",","").replace(",","").r
 
 console.log(randomNumber)
 
+function noRepeat(number) {
+    return (/([0-9]).*?\1/).test(number)
+} 
+
 $('form').on('submit', function(e) {
 
-  if ( $('input').val() == /(?!.*(\d).*\1)\d{4}/ ) {
+  var fijas = 0;
+  var picas = 0;
+
+  for (var a = 0; a<$('input').val().length; a ++) {
+    if ($('input').val()[a]==randomNumber[a]){
+      fijas = fijas + 1;
+    } else {
+      for (var b = 0; b < randomNumber.length; b++){
+        if ($('input').val()[a]==randomNumber[b]) {
+          picas = picas +1;
+        }
+      };
+    };
+  };
+
+  if ( noRepeat($('input').val()) ) {
 
     $('.error').show();
     $('input').val('')
@@ -26,13 +45,13 @@ $('form').on('submit', function(e) {
 
   } else if ( $('input').val() != randomNumber ) {
 
-    $('tbody').prepend('<tr><td>' + $('input').val() + '</td><td>' + 'Picas' + '</td><td>' + 'Fijas' + '</td></tr>');
+    $('tbody').prepend('<tr><td>' + $('input').val() + '</td><td>' + picas + '</td><td>' + fijas + '</td></tr>');
     $('input').val('');
     $('.error').hide()
 
   } else if ( $('input').val() == randomNumber ) {
 
-    $('tbody').prepend('<tr><td>' + $('input').val() + '</td><td>' + 'Picas' + '</td><td>' + 'Fijas' + '</td></tr>');
+    $('tbody').prepend('<tr><td>' + $('input').val() + '</td><td>' + picas + '</td><td>' + fijas + '</td></tr>');
     $('.win').show();
     $('input').val('');
     $('.error').hide()
