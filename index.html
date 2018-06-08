@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta lang="es">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>Picas y Fijas</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <link rel="stylesheet" href="css/normalize.css">
+	  <link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h1>Picas y Fijas</h1>
+					<p>Ingresa cuatro dígitos diferentes y oprime enter:</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<input class="form-control" type="number" id='input'/>
+				</div>
+			</div>
+
+				<div class="col">
+					<div class="error">
+						<div class="alert alert-danger my-4" role="alert">
+						  <strong>¡Vaya!</strong> Recuerda que debes ingresar 4 dígitos diferentes.
+						</div>
+					</div>
+					<div class="win">
+						<div class="alert alert-success my-4" role="alert">
+						  <strong>¡Felicidades, ganaste!</strong>
+						  <a href="">Click aquí para jugar nuevamente.</a>
+						</div>
+					</div>
+				</div>
+
+			<div class="row">
+				<div class="col">
+					<table class="table table-bordered mt-5">
+					  <thead>
+					    <tr>
+					      <th scope="col">Número</th>
+					      <th scope="col">Picas</th>
+					      <th scope="col">Fijas</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
