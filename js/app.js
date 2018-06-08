@@ -12,44 +12,34 @@ var randomNumber = array.slice(0,4).toString().replace(",","").replace(",","").r
 
 console.log(randomNumber)
 
-$('input').on('keydown', function(e) {
-  if ( $('input').val() == randomNumber ) {
+
+$('form').on('submit', function(e) {
+
+  if ( $('input').val().length < 4 || $('input').val().length > 4 ) {
+
+    $('.error').show();
+    $('input').val('')
+
+  } else if ( $('input').val() == /(?!.*(\d).*\1)\d{4}/ ) {
+
+    $('.error').show();
+    $('input').val('')
+
+  } else if ( $('input').val() != randomNumber ) {
+
+    $('tbody').prepend('<tr><td>' + $('input').val() + '</td><td>' + 'Picas' + '</td><td>' + 'Fijas' + '</td></tr>');
+    $('input').val('');
+    $('.error').hide()
+
+  } else if ( $('input').val() == randomNumber ) {
+
+    $('tbody').prepend('<tr><td>' + $('input').val() + '</td><td>' + 'Picas' + '</td><td>' + 'Fijas' + '</td></tr>');
     $('.win').show();
+    $('input').val('');
+    $('.error').hide()
+
   }
+
+  e.preventDefault();
+
 });
-
-
-//$('input').on('keydown', function(e) {
-//  if ( e.keyCode === 13 ) {
-//    console.log($('input').val())
-//  }  
-//});
-
-
-//$('input').on('keydown', function(e) {
-//  if ( e.which == 13 ) {
-//    $('tbody').append('<tr><td>' + $('input').val() + '</td><td>' + 'Picas' + '</td><td>' + 'Fijas' + '</td></tr>')
-//  }
-//});
-
-$('input').on('keydown', function(e) {
-  if ( (e.which == 13) && ($('input').val() != randomNumber) ) {
-    
-  }
-});
-
-$('input').on('keydown', function(e) {
-  if ( $('input').val().length > 4) {
-    $('.error').show()
-  }
-});
-
-$('input').on('keydown', function(e) {
-  if ( $('input').val().length < 4) {
-    $('.error').show()
-  }
-});
-
-
-
-// EXPRESIÓN REGULAR = /(?!.*(\d).*\1)\d{4}/gm
